@@ -30,5 +30,13 @@ int main()
             l=i+1;
         }
     }
+    if(a[n-1]==a[n-2])
+    {
+        check=n-1-l+1;
+        if(check%2==0)
+        {
+        ans+=check/2*(check-1);
+        }else ans+=(check-1)/2*check;
+    }
     cout<<ans;
 }
