@@ -29,7 +29,7 @@ int main()
             a2=a1;
 
         }
-        ans=max(ans,a2+a1-a[i]);
+        ans=max(ans,a2-a[i]+a2);
     }
     cout<<ans;
 }
