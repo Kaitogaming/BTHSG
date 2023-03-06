@@ -22,7 +22,10 @@ int main()
             if(i!=l)
             {
                 check=i-l+1;
-                ans+=check*(check-1)/2;
+                if(check%2==0)
+                {
+                ans+=check/2*(check-1);
+                }else ans+=(check-1)/2*check;
             }
             l=i+1;
         }
