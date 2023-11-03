@@ -22,7 +22,6 @@ int main()
     {
         ll c,d,e;
         cin>>c>>d>>e;
-        //if(d>c) continue;
         a.push_back(mp(c,mp(d,e)));
     }
     sort(a.begin(),a.end());
@@ -30,14 +29,16 @@ int main()
 //    {
 //        cout<<a[i].first<<" "<<a[i].fi<<" "<<a[i].se<<endl;
 //    }
+    ll ans=INT_MIN;
     for(ll i=1;i<a.size();i++)
     {
         for(ll j=i-1;j>=0;j--)
         {
             if(a[i].first-a[j].first<abs(a[i].fi-a[j].fi)) continue;
             dp[i]=max(dp[i],dp[j]+a[i].se);
+            ans=max(ans,dp[i]);
         }
     }
 //    for(ll)
-    cout<<dp[a.size()-1]<<endl;
+    cout<<ans;
 }
