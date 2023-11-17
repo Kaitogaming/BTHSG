@@ -26,8 +26,8 @@ int main()
         if(cur!=s[i] && i!=0)
         {
             if(cnt>1)
-            ans+=cnt+'0';
-            ans+=cur;
+            cout<<cnt;
+            cout<<cur;
             cnt=1;
             cur=s[i];
         }else
@@ -35,13 +35,25 @@ int main()
             cnt++;
         }
     }
-    cout<<ans<<endl;
-    for(ll i=0;i<s1.size();i+=2)
+    cout<<endl;
+    ll cnt1;
+    cnt1=0;
+    for(ll i=0;i<s1.size();i++)
     {
-        ll dem=s1[i]-'0';
-        for(ll j=0;j<dem;j++)
-        {
-            cout<<s1[i+1];
-        }
+          if(s1[i]-'0'>9 || s1[i]-'0'<0)
+          {
+              if(cnt1==0) cout<<s1[i];
+              //cout<<cnt1<<" dcm "<<endl;
+              for(ll j=0;j<cnt1;j++)
+              {
+                  cout<<s1[i];
+              }
+              cnt1=0;
+
+          }else
+          {
+              cnt1*=10;
+              cnt1+=s1[i]-'0';
+          }
     }
 }
