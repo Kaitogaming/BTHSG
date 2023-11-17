@@ -9,8 +9,8 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-//    freopen("MUAVE.INP","r",stdin);
-//    freopen("MUAVE.OUT","w",stdout);
+    freopen("MUAVE.INP","r",stdin);
+    freopen("MUAVE.OUT","w",stdout);
     memset(dp,0x3f,sizeof(dp));
     ll n;
     cin>>n;
