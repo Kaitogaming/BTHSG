@@ -30,6 +30,7 @@ int main()
                 if(dp[j]==0) continue;
                 if(j+v[i]*k>s) break;
                 dp[j+v[i]*k]+=dp[j];
+                dp[j+v[i]*k]%=MOD;
                 mx=max(mx,j+v[i]*k);
             }
         }
