@@ -1,49 +1,38 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define endl "\n"
-const int N=505,M=1e6+5,MOD=131131;
+const ll N=505,M=1e5+5,MOD=131131;
 using namespace std;
-ll dp[M];
 ll v[N];
 ll w[N];
+ll dp[M];
 map<ll,ll> mp;
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    freopen("SMARKET.INP","r",stdin);
+    //freopen("SMARKET.INP","r",stdin);
     //freopen("SMARKET.OUT","w",stdout);
-    ll n,m;
-    cin>>m>>n;
-    for(ll i=1; i<=n; i++)
-    {
-        cin>>v[i]>>w[i];
-    }
-    ll mx=0;
-    mp[0]=1;
-    for(ll i=1;i<=n;i++)
-    {
-        map<ll,ll>::iterator it=mp.end();
-        it--;
-        for(;it!=mp.begin();it--)
+   ll s,n;
+   cin>>s>>n;
+   for(ll i=1;i<=n;i++)
+   {
+       cin>>v[i]>>w[i];
+   }
+   dp[0]=1;
+   ll mx=0;
+   for(ll i=1;i<=n;i++)
+   {
+        for(ll j=min(mx,s);j>=0;j--)
         {
-            for(ll j=1;j<=w[i];j++)
+            for(ll k=1;k<=w[i];k++)
             {
-                ll sum=v[i]*j;
-                mp[it->first+sum]%=MOD;                mp[it->first+sum]+=it->second;
-                mp[it->first+sum]%=MOD;
+                if(dp[j]==0) continue;
+                if(j+v[i]*k>s) break;
+                dp[j+v[i]*k]+=dp[j];
+                mx=max(mx,j+v[i]*k);
             }
         }
-        for(ll j=1;j<=w[i];j++)
-        {
-            mp[v[i]*j]++;
-            mp[v[i]*j]%=MOD;
-        }
-    }
-    map<ll,ll>::iterator it;
-//    for(it=mp.begin();it!=mp.end();it++)
-//    {
-//        cout<<it->first<<" "<<it->second<<endl;
-//    }
-    cout<<mp[m];
+   }
+   cout<<dp[s];
 }
