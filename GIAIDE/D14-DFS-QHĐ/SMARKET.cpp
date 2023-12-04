@@ -25,7 +25,6 @@ int main()
     {
         map<ll,ll>::iterator it=mp.end();
         it--;
-        if(it==mp)
         for(;it!=mp.begin();it--)
         {
             for(ll j=1;j<=w[i];j++)
